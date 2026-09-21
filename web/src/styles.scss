@@ -14,12 +14,7 @@ html {
   height: 100%;
   @include mat.theme(
     (
-      color: (
-        primary: theme-colors.$primary-palette,
-        tertiary: theme-colors.$tertiary-palette,
-      ),
-      typography: 'Comfortaa',
-      density: 0,
+      color: ( primary: theme-colors.$primary-palette, tertiary: theme-colors.$tertiary-palette, ), typography: 'Comfortaa', density: 0,
     )
   );
 
