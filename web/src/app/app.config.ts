@@ -1,10 +1,7 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
+// Libraries
 import { routes } from './app.routes';
+import { provideRouter } from '@angular/router';
+import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 
-export const appConfig: ApplicationConfig = {
-  providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideRouter(routes)
-  ]
-};
+// Application configuration
+export const appConfig: ApplicationConfig = { providers: [ provideBrowserGlobalErrorListeners(), provideRouter(routes)] };

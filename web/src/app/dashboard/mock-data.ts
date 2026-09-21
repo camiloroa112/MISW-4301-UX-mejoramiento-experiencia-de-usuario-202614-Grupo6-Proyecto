@@ -4,8 +4,10 @@
 // visual/interactivo, sin lógica de negocio real.
 // ============================================================================
 
+// KPI cards
 export type DeltaVariant = 'positivo' | 'neutral';
 
+// KPI cards
 export interface KpiCard {
   value: string;
   label: string;
@@ -13,6 +15,7 @@ export interface KpiCard {
   deltaVariant: DeltaVariant;
 }
 
+// KPI cards
 export const KPI_CARDS: KpiCard[] = [
   { value: '5', label: 'Días sin posponer', delta: '↑ 2 vs. semana pasada', deltaVariant: 'positivo' },
   { value: '2', label: 'Snoozes esta semana', delta: '↓ 3 vs. semana pasada', deltaVariant: 'positivo' },
@@ -20,11 +23,13 @@ export const KPI_CARDS: KpiCard[] = [
   { value: '1', label: 'Salidas de emergencia', delta: 'Últimos 30 días', deltaVariant: 'neutral' },
 ];
 
+// Next alarm
 export interface DayChip {
   label: string;
   active: boolean;
 }
 
+// Next alarm
 export const NEXT_ALARM_DAYS: DayChip[] = [
   { label: 'L', active: true },
   { label: 'M', active: true },
@@ -35,8 +40,10 @@ export const NEXT_ALARM_DAYS: DayChip[] = [
   { label: 'D', active: false },
 ];
 
+// Recent activity
 export type ActivityStatusVariant = 'exito' | 'peligro' | 'acento';
 
+// Recent activity
 export interface ActivityItem {
   title: string;
   subtitle: string;
@@ -44,6 +51,7 @@ export interface ActivityItem {
   statusVariant: ActivityStatusVariant;
 }
 
+// Recent activity
 export const RECENT_ACTIVITY: ActivityItem[] = [
   {
     title: 'Hoy · 06:30',
@@ -54,32 +62,34 @@ export const RECENT_ACTIVITY: ActivityItem[] = [
   {
     title: 'Ayer · 06:30',
     subtitle: 'Gym · Reto de escritura',
-    status: 'Reto completado',
-    statusVariant: 'exito',
-  },
-  {
-    title: 'Lun · 06:30',
-    subtitle: 'Gym · Reto de escritura',
     status: 'Salida de emergencia',
     statusVariant: 'peligro',
   },
   {
+    title: 'Lun · 06:30',
+    subtitle: 'Gym · Reto de escritura',
+    status: 'Pospuesto 2 veces',
+    statusVariant: 'acento',
+  },
+  {
     title: 'Dom · 08:00',
     subtitle: 'Descanso · Sin reto',
-    status: 'Pospuesta 2 veces',
-    statusVariant: 'acento',
+    status: 'Reto completado',
+    statusVariant: 'exito',
   },
 ];
 
+// Weekly bar chart
 export type WeeklyBarVariant = 'suave' | 'borde' | 'acento';
 
+// Weekly bar chart
 export interface WeeklyBar {
   day: string;
-  /** Alto exacto en px, tomado directamente del archivo de Figma. */
   heightPx: number;
   variant: WeeklyBarVariant;
 }
 
+// Weekly bar chart
 export const WEEKLY_SNOOZES: WeeklyBar[] = [
   { day: 'L', heightPx: 44, variant: 'suave' },
   { day: 'M', heightPx: 6, variant: 'borde' },
@@ -90,12 +100,14 @@ export const WEEKLY_SNOOZES: WeeklyBar[] = [
   { day: 'D', heightPx: 44, variant: 'suave' },
 ];
 
+// User
 export interface MockUser {
   initials: string;
   name: string;
   email: string;
 }
 
+// User
 export const CURRENT_USER: MockUser = {
   initials: 'PA',
   name: 'Paula Alarcón',
