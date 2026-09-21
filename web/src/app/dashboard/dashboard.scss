@@ -125,11 +125,13 @@
   height: 36px;
   border-radius: 50%;
   background-color: tokens.$color-sem-exito-suave;
-  color: tokens.$color-sem-exito;
+  color: tokens.$color-salvia-oscuro;
   display: flex;
   align-items: center;
   justify-content: center;
-  @include typography.web-etiqueta;
+  font-family: tokens.$font-family-base;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 .user-block__info {
@@ -144,6 +146,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 13px;
 }
 
 .user-block__email {
@@ -152,6 +155,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 12px;
 }
 
 .logout-button {

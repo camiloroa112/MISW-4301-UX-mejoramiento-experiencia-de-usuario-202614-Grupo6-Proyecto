@@ -129,7 +129,11 @@
               <li class="activity-item" *ngFor="let item of recentActivity">
                 <span class="activity-item__icon">
                   <!-- Campana de solo contorno (stroke), no rellena -->
-                  <img src="assets/ic-campana.svg" alt="" width="24" height="24" />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 6.60034C13.0343 6.60034 14.0264 7.01061 14.7578 7.74194C15.4892 8.47329 15.9003 9.46548 15.9004 10.4998V11.9998C15.9004 13.3406 16.2017 14.5996 16.7793 15.7H7.2207C7.79829 14.5996 8.09961 13.3406 8.09961 11.9998V10.4998C8.09966 9.46548 8.51084 8.47329 9.24219 7.74194C9.92786 7.05632 10.8428 6.65304 11.8066 6.60522L12 6.60034Z" stroke="#B4651F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 5.69998V4.09998" stroke="#B4651F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M10.1 19.4C10.2315 19.8002 10.486 20.1486 10.8272 20.3956C11.1684 20.6425 11.5788 20.7755 12 20.7755C12.4212 20.7755 12.8316 20.6425 13.1728 20.3956C13.514 20.1486 13.7685 19.8002 13.9 19.4" stroke="#B4651F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
                 </span>
 
                 <!--Title and Subtitle-->
@@ -142,7 +146,9 @@
                   <span class="status-badge__dot" aria-hidden="true"></span>
                     {{ item.status }}
                 </span>                
-                <span class="activity-item__chevron" aria-hidden="true">›</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="9" height="15" viewBox="0 0 9 15" fill="none">
+                  <path d="M0.900024 0.900024L7.40002 7.40002L0.900024 13.9" stroke="#75736C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </li>
             </ul>
           </mat-card>
