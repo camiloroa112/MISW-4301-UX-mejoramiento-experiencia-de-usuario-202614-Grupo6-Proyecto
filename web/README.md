@@ -2,6 +2,23 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.8.
 
+## Pantallas implementadas
+
+Maqueta navegable (NO funcional), pixel-perfect contra los mockups de Figma ("snoozeless - mockups - web"), Angular Material + tokens de `src/styles/`:
+
+| Ruta | Pantalla | Nodo Figma |
+| --- | --- | --- |
+| `/login` | Inicio de sesión | `116:101` — W01-login |
+| `/dashboard` | Dashboard | `121:44` — W02-Dashboard |
+| `/alarma/:id` | Detalle de alarma | `121:107` — W02-detalle-alarma |
+| `/alarma/:id/vivo` | Detalle de alarma en vivo (sonando) | `121:170` — W02-detalle-alarma-vivo |
+| `/reto-escritura` | Reto de escritura para apagar la alarma | `121:236` — W03-reto-escritura |
+| `/reto-completado` | Reto completado con éxito | `227:464` — W03-reto-completado |
+
+`reto-escritura` incluye validación en vivo (prevención de errores): el campo pasa a estado de error si lo escrito deja de coincidir con la frase objetivo, y navega automáticamente a `/reto-completado` en cuanto el texto coincide exactamente con la frase objetivo.
+
+`/login` es la ruta raíz (`''` redirige a `/login`). Flujo completo navegable con clics, sin editar la URL: `/login` → (Continuar con Google/Apple) `/dashboard` → (Ver detalle) `/alarma/:id` → (Simular: la alarma está sonando) `/alarma/:id/vivo` → (Ir al reto) `/reto-escritura` → (al completar la frase) `/reto-completado` → (Ir al dashboard) `/dashboard`.
+
 ## Development server
 
 To start a local development server, run:
