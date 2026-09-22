@@ -1,7 +1,9 @@
+// Librerías
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { IonContent } from '@ionic/angular';
+import { CommonModule } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
+import { RetoService } from '../services/reto.service';
 
 /**
  * RetoCursoPage
@@ -18,24 +20,52 @@ import { IonContent } from '@ionic/angular';
   styleUrl: './reto-curso.page.scss',
 })
 export class RetoCursoPage {
-  protected readonly totalSteps = 40;
-  protected readonly stepIncrement = 4;
-  protected currentSteps = 12;
 
-  protected get progressPercent(): number {
-    return Math.round((this.currentSteps / this.totalSteps) * 100);
+  constructor(
+    private readonly router: Router,
+    private readonly retoService: RetoService
+  ) {}
+
+  // Variables de estado
+  protected get totalSteps(): number {
+    return this.retoService.totalSteps;
   }
 
+  protected get currentSteps(): number {
+    return this.retoService.currentSteps;
+  }
+
+  // Métodos de cálculo de estado
+  protected get progressPercent(): number {
+    return this.retoService.progressPercent;
+  }
+
+  // Métodos de cálculo de estilo
   protected get ringGradient(): string {
     const p = this.progressPercent;
-    return `conic-gradient(#E68A3E 0% ${p}%, #D9CFC0 ${p}% 100%)`;
+
+    return `conic-gradient(
+      #E68A3E 0% ${p}%,
+      #D9CFC0 ${p}% 100%
+    )`;
   }
 
-  /** Simula avanzar pasos al tocar la pantalla, como pide el propio diseño. */
+  /**
+   * Simula el avance del usuario.
+   * Al llegar a 32 pasos muestra el aviso.
+   * Al llegar a 40 pasos finaliza el reto.
+   */
   protected onTapSimulate(): void {
-    if (this.currentSteps >= this.totalSteps) {
+
+    const state = this.retoService.advanceSteps();
+
+    if (state === 'missing') {
+      this.router.navigate(['/reto-faltan']);
       return;
     }
-    this.currentSteps = Math.min(this.totalSteps, this.currentSteps + this.stepIncrement);
+
+    if (state === 'completed') {
+      this.router.navigate(['/reto-ok']);
+    }
   }
 }

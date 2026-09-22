@@ -1,13 +1,42 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>reto-faltan</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="pagina" [fullscreen]="true" role="button" tabindex="0" (click)="onContinueChallenge()" (keydown.enter)="onContinueChallenge()" (keydown.space)="onContinueChallenge(); $event.preventDefault()">
+  <header class="app-bar">
+    <a class="app-bar__back" routerLink="/dashboard">‹</a>
+    <span class="app-bar__title">Reto activo</span>
+  </header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">reto-faltan</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <svg class="deco-sunrise" viewBox="0 0 78 46" fill="none" aria-hidden="true">
+    <path d="M8 46a31 31 0 0 1 62 0" stroke="#E68A3E" stroke-width="1.6" stroke-linecap="round" />
+    <g stroke="#E68A3E" stroke-width="1.6" stroke-linecap="round">
+      <line x1="39" y1="0" x2="39" y2="8" />
+      <line x1="14" y1="10" x2="19" y2="16" />
+      <line x1="64" y1="10" x2="59" y2="16" />
+      <line x1="2" y1="30" x2="10" y2="28" />
+      <line x1="76" y1="30" x2="68" y2="28" />
+    </g>
+  </svg>
+
+  <div class="pagina-body">
+    <div class="contenido">
+      <div class="anillo" [style.background]="ringGradient">
+        <div class="anillo__hueco">
+          <span class="anillo__valor">{{ currentSteps }}</span>
+          <span class="anillo__label">de {{ totalSteps }} pasos</span>
+        </div>
+      </div>
+
+      <p class="progreso-texto">{{ currentSteps }} / {{ totalSteps }} pasos caminados</p>
+
+      <div class="barra">
+        <span class="barra__label">Caminando…</span>
+        <div class="barra__track">
+          <div class="barra__fill" [style.width.%]="progressPercent"></div>
+        </div>
+      </div>
+
+      <div class="banner banner--aviso">
+        <span class="banner__tag">AVISO</span>
+        <p class="banner__texto">Aún faltan {{ missingSteps }} pasos. Al completar podrás cerrar la alarma.</p>
+      </div>
+    </div>
+  </div>
 </ion-content>
