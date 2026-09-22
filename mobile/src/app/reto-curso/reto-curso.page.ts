@@ -21,18 +21,39 @@ import { RetoService } from '../services/reto.service';
 })
 export class RetoCursoPage {
 
+  // Constructor
   constructor(
     private readonly router: Router,
     private readonly retoService: RetoService
   ) {}
 
-  // Variables de estado
+  // Limpiar el foco activo
+  private clearActiveFocus(): void {
+    const activeElement = document.activeElement;
+
+    if (activeElement instanceof HTMLElement) {
+      activeElement.blur();
+    }
+  }
+
+  // Obtener el total de pasos
   protected get totalSteps(): number {
     return this.retoService.totalSteps;
   }
 
+  // Obtener los pasos actuales
   protected get currentSteps(): number {
     return this.retoService.currentSteps;
+  }
+
+  // Obtener los pasos faltantes
+  protected get missingSteps(): number {
+    return this.retoService.missingSteps;
+  }
+
+  // Obtener si se muestra el aviso de falta de pasos
+  protected get showMissingNotice(): boolean {
+    return this.currentSteps >= 32 && this.currentSteps < this.totalSteps;
   }
 
   // Métodos de cálculo de estado
@@ -57,14 +78,19 @@ export class RetoCursoPage {
    */
   protected onTapSimulate(): void {
 
+    // Avanzar pasos
     const state = this.retoService.advanceSteps();
 
+    // Reto faltante
     if (state === 'missing') {
+      this.clearActiveFocus();
       this.router.navigate(['/reto-faltan']);
       return;
     }
 
+    // Reto completado
     if (state === 'completed') {
+      this.clearActiveFocus();
       this.router.navigate(['/reto-ok']);
     }
   }

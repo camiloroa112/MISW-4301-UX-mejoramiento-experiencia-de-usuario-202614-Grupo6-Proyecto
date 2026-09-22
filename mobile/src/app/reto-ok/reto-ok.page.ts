@@ -1,19 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+// Librerías
+import { Component } from '@angular/core';
+import { IonContent } from '@ionic/angular';
+import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular';
 
+/**
+ * RetoOkPage
+ *
+ * Maqueta navegable (NO funcional). Nodo de Figma 14:93 "M03-reto-ok".
+ * Estado de reto completado (100%), con banner de éxito y botón para
+ * cerrar la alarma.
+ */
 @Component({
   selector: 'app-reto-ok',
+  standalone: true,
+  imports: [CommonModule, RouterLink, IonContent],
   templateUrl: './reto-ok.page.html',
-  styleUrls: ['./reto-ok.page.scss'],
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  styleUrl: './reto-ok.page.scss',
 })
-export class RetoOkPage implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+// Componente
+export class RetoOkPage {
+  protected readonly userName = 'Paula';
 }
