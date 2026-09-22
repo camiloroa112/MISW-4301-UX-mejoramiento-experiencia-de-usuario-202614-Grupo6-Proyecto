@@ -1,22 +1,24 @@
-<ion-content class="pagina" [fullscreen]="true" role="button" tabindex="0" (click)="onContinueChallenge()" (keydown.enter)="onContinueChallenge()" (keydown.space)="onContinueChallenge(); $event.preventDefault()">
+<ion-content class="pagina" [fullscreen]="true" role="button" tabindex="0" (click)="onTapSimulate()" (keydown.enter)="onTapSimulate()" (keydown.space)="onTapSimulate(); $event.preventDefault()">
   <header class="app-bar">
-    <a class="app-bar__back" routerLink="/dashboard">‹</a>
+    <a class="app-bar__back" routerLink="/home" (click)="$event.stopPropagation()">‹</a>
     <span class="app-bar__title">Reto activo</span>
   </header>
 
-  <svg class="deco-sunrise" viewBox="0 0 78 46" fill="none" aria-hidden="true">
-    <path d="M8 46a31 31 0 0 1 62 0" stroke="#E68A3E" stroke-width="1.6" stroke-linecap="round" />
-    <g stroke="#E68A3E" stroke-width="1.6" stroke-linecap="round">
-      <line x1="39" y1="0" x2="39" y2="8" />
-      <line x1="14" y1="10" x2="19" y2="16" />
-      <line x1="64" y1="10" x2="59" y2="16" />
-      <line x1="2" y1="30" x2="10" y2="28" />
-      <line x1="76" y1="30" x2="68" y2="28" />
-    </g>
+  <!-- Deco de sol -->
+  <svg class="deco-sunrise" xmlns="http://www.w3.org/2000/svg" width="78" height="46" viewBox="0 0 78 46" fill="none" aria-hidden="true">
+    <path d="M17.875 40.625C17.875 28.925 27.3 19.5 39 19.5C50.7 19.5 60.125 28.925 60.125 40.625" stroke="#E68A3E" stroke-width="1.65039" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M4.875 40.625H73.125" stroke="#E68A3E" stroke-width="1.65039" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M39 15.4375V8.125" stroke="#E68A3E" stroke-width="1.65039" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M51.5938 18.85L55.25 12.5125" stroke="#E68A3E" stroke-width="1.65039" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M26.4063 18.85L22.75 12.5125" stroke="#E68A3E" stroke-width="1.65039" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M60.775 28.0313L67.1125 24.375" stroke="#E68A3E" stroke-width="1.65039" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M17.225 28.0313L10.8875 24.375" stroke="#E68A3E" stroke-width="1.65039" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
 
   <div class="pagina-body">
     <div class="contenido">
+      
+      <!-- Anillo de progreso -->
       <div class="anillo" [style.background]="ringGradient">
         <div class="anillo__hueco">
           <span class="anillo__valor">{{ currentSteps }}</span>
@@ -24,8 +26,10 @@
         </div>
       </div>
 
+      <!-- Progreso -->
       <p class="progreso-texto">{{ currentSteps }} / {{ totalSteps }} pasos caminados</p>
 
+      <!-- Barra de progreso -->
       <div class="barra">
         <span class="barra__label">Caminando…</span>
         <div class="barra__track">
@@ -33,6 +37,7 @@
         </div>
       </div>
 
+      <!-- Banner de aviso -->
       <div class="banner banner--aviso">
         <span class="banner__tag">AVISO</span>
         <p class="banner__texto">Aún faltan {{ missingSteps }} pasos. Al completar podrás cerrar la alarma.</p>

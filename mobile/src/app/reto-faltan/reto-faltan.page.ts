@@ -22,20 +22,32 @@ import { RetoService } from '../services/reto.service';
 })
 export class RetoFaltanPage {
 
+  // Constructor
   constructor(
     private readonly router: Router,
     private readonly retoService: RetoService
   ) {}
+
+  // Limpiar el foco activo
+  private clearActiveFocus(): void {
+    const activeElement = document.activeElement;
+
+    if (activeElement instanceof HTMLElement) {
+      activeElement.blur();
+    }
+  }
 
   // Variables de estado
   protected get totalSteps(): number {
     return this.retoService.totalSteps;
   }
 
+  // Obtener los pasos actuales
   protected get currentSteps(): number {
     return this.retoService.currentSteps;
   }
 
+  // Obtener los pasos faltantes
   protected get missingSteps(): number {
     return this.retoService.missingSteps;
   }
@@ -47,8 +59,11 @@ export class RetoFaltanPage {
 
   // Métodos de cálculo de estilo
   protected get ringGradient(): string {
+    
+    // Porcentaje de progreso
     const p = this.progressPercent;
 
+    // Retorno del gradiente
     return `conic-gradient(
       #E68A3E 0% ${p}%,
       #D9CFC0 ${p}% 100%
@@ -56,7 +71,15 @@ export class RetoFaltanPage {
   }
 
   // Continuar con el reto
-  protected onContinueChallenge(): void {
-    this.router.navigate(['/reto-curso']);
+  protected onTapSimulate(): void {
+    const state = this.retoService.advanceSteps();
+
+    if (state === 'completed') {
+      this.clearActiveFocus();
+
+      requestAnimationFrame(() => {
+        this.router.navigate(['/reto-ok']);
+      });
+    }
   }
 }

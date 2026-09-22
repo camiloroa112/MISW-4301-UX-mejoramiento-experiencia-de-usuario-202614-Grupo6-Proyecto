@@ -191,3 +191,59 @@
   color: tokens.$color-texto-atenuado;
   cursor: pointer;
 }
+
+// ---- Banner de aviso --------------------------------------------------------
+
+.banner {
+  width: 100%;
+  max-width: 328px;
+  position: relative;
+  border-radius: 8px;
+  padding: 9px 14px 9px 18px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  overflow: hidden;
+  margin-top: clamp(10px, 1.5dvh, 12px);
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+  }
+
+  &--aviso {
+    background-color: tokens.$color-amanecer-tint;
+
+    &::before {
+      background-color: tokens.$color-amanecer;
+    }
+
+    .banner__tag {
+      color: tokens.$color-amanecer-oscuro;
+    }
+  }
+}
+
+.banner__tag {
+  font-family: tokens.$font-family-base;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.4px;
+}
+
+.banner__texto {
+  color: tokens.$color-tinta;
+  font-family: tokens.$font-family-base;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+}
