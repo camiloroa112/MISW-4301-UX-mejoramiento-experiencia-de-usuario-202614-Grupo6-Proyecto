@@ -1,4 +1,4 @@
-# Snoozeless — UX Mejoramiento de Experiencia del Usuario (Grupo #6)
+# Snoozeless - UX Mejoramiento de Experiencia del Usuario (Grupo #6)
 
 Prototipos no funcionales, pixel-perfect contra los mockups de Figma, de la aplicación Snoozeless:
 
@@ -9,8 +9,8 @@ Prototipos no funcionales, pixel-perfect contra los mockups de Figma, de la apli
 
 Monorepo con dos aplicaciones frontend independientes, sin backend real (datos mock, navegación funcional entre pantallas):
 
-- **[`web/`](web/README.md)** — Aplicación Angular (Material).
-- **[`mobile/`](mobile/README.md)** — Aplicación Ionic + Angular + Capacitor.
+- **[`web/`](web/README.md)** - Aplicación Angular (Material).
+- **[`mobile/`](mobile/README.md)** - Aplicación Ionic + Angular + Capacitor.
 
 Cada carpeta tiene su propio `README.md` con el detalle completo de arquitectura y decisiones de diseño. Este documento resume qué se implementó en cada una y cómo correrlas.
 
