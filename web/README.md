@@ -9,6 +9,7 @@ Maqueta navegable (NO funcional), pixel-perfect contra los mockups de Figma ("sn
 | Ruta | Pantalla | Nodo Figma |
 | --- | --- | --- |
 | `/login` | Inicio de sesión | `116:101` — W01-login |
+| `/perfil` | Perfil | `116:137` - W01-perfil |
 | `/dashboard` | Dashboard | `121:44` — W02-Dashboard |
 | `/alarma/:id` | Detalle de alarma | `121:107` — W02-detalle-alarma |
 | `/alarma/:id/vivo` | Detalle de alarma en vivo (sonando) | `121:170` — W02-detalle-alarma-vivo |

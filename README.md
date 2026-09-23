@@ -29,6 +29,7 @@ Angular 22 standalone + Angular Material, tokens de diseño en `web/src/styles/`
 | Ruta | Pantalla |
 | --- | --- |
 | `/login` | Inicio de sesión (ruta raíz) |
+| `/perfil` | Perfil |
 | `/dashboard` | Dashboard |
 | `/alarma/:id` | Detalle de alarma |
 | `/alarma/:id/vivo` | Detalle de alarma en vivo (sonando) |
