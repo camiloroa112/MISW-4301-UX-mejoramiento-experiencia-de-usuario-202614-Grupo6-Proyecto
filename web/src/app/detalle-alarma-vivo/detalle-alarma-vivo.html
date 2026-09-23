@@ -5,6 +5,7 @@
   <mat-sidenav mode="side" [opened]="true" class="sidebar" disableClose>
     <div class="sidebar__inner">
     <div class="sidebar__logo">
+      
       <!-- Amanecer (sol saliendo del horizonte), no un sol de mediodía -->
       <svg class="icon icon--accent icon--logo" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path d="M6 14a6 6 0 0 1 12 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
@@ -15,10 +16,15 @@
           <line x1="19.5" y1="6.5" x2="17.6" y2="8.2" />
         </g>
       </svg>
+
+      <!-- Texto de la marca -->
       <span class="sidebar__logo-text">snoozeless</span>
     </div>
 
+    <!-- Navegación -->
     <nav class="sidebar__nav">
+      
+      <!-- Navegación activa -->
       <a class="nav-item nav-item--active" routerLink="/dashboard">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path d="M6.2002 4.90039H8.7998C9.14459 4.90039 9.47593 5.03648 9.71973 5.28027C9.96352 5.52407 10.0996 5.85541 10.0996 6.2002V8.7998C10.0996 9.14459 9.96352 9.47593 9.71973 9.71973C9.47593 9.96352 9.14459 10.0996 8.7998 10.0996H6.2002C5.85541 10.0996 5.52407 9.96352 5.28027 9.71973C5.03648 9.47593 4.90039 9.14459 4.90039 8.7998V6.2002C4.90039 5.85541 5.03648 5.52407 5.28027 5.28027C5.52407 5.03648 5.85541 4.90039 6.2002 4.90039Z" stroke="#B4651F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -28,7 +34,10 @@
         </svg>
         <span>Dashboard</span>
       </a>
-      <a class="nav-item">
+
+      <!-- Navegación -->
+      <a class="nav-item" routerLink="/perfil">
+        <!-- Perfil -->
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path d="M12.0002 5.40039C13.5466 5.4005 14.8 6.65386 14.8 8.2002C14.7999 9.74644 13.5465 10.9999 12.0002 11C10.4539 11 9.20055 9.7465 9.20044 8.2002C9.20044 6.6538 10.4538 5.40039 12.0002 5.40039Z" stroke="#615F58" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M5.40002 19.8C5.40002 16.5 8.40002 14.3 12 14.3C15.6 14.3 18.6 16.5 18.6 19.8" stroke="#615F58" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -37,15 +46,20 @@
       </a>
     </nav>
 
+    <!-- Usuario -->
     <div class="sidebar__user">
       <div class="user-block">
+
+        <!-- Avatar -->
         <div class="user-block__avatar">{{ user.initials }}</div>
         <div class="user-block__info">
           <span class="user-block__name">{{ user.name }}</span>
           <span class="user-block__email">{{ user.email }}</span>
         </div>
       </div>
-      <button type="button" class="logout-button">
+
+      <!-- Botón de cierre de sesión -->
+      <button type="button" class="logout-button" routerLink="/login">
         <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <g stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M15 4H6a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h9" />
@@ -68,7 +82,8 @@
         <h1 class="topbar__title">{{ alarmName }}</h1>
         <p class="topbar__subtitle">Detalle de la alarma</p>
       </div>
-
+      
+      <!-- Acciones -->
       <div class="dashboard__header-actions">
         <button type="button" class="icon-button" aria-label="Buscar">
           <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -76,7 +91,8 @@
             <line x1="20" y1="20" x2="16" y2="16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
           </svg>
         </button>
-
+        
+        <!-- Usuario -->
         <div class="user-block">
           <div class="user-block__avatar">{{ user.initials }}</div>
           <div class="user-block__info">
@@ -86,7 +102,8 @@
         </div>
       </div>
     </header>
-
+    
+    <!-- Contenido -->
     <main class="detalle">
       <a class="volver" routerLink="/dashboard">
         <svg xmlns="http://www.w3.org/2000/svg" width="9" height="15" viewBox="0 0 9 15" fill="none">
@@ -106,6 +123,7 @@
           <p class="sonando__subtitle">{{ alarmName }} · {{ alarmTime }} · lleva {{ secondsSonando }} segundos sonando</p>
         </div>
 
+        <!-- Botón de posponer -->
         <div class="sonando__acciones">
           <button type="button" class="btn-ghost-invert">Posponer ({{ posponerRestantes }} restantes)</button>
           <a class="btn-solid-invert" routerLink="/reto-escritura">Ir al reto</a>
@@ -119,11 +137,13 @@
           <span class="resumen__dias-texto">Lunes a viernes</span>
         </div>
 
+        <!-- Datos de la alarma -->
         <div class="resumen__detalles">
           <div class="resumen__chips">
             <span class="day-chip" *ngFor="let day of alarmDays" [class.day-chip--active]="day.active">{{ day.label }}</span>
           </div>
 
+          <!-- Detalles de la alarma -->
           <div class="resumen__datos">
             <div class="dato" *ngFor="let dato of alarmData">
               <span class="dato__label">{{ dato.label }}</span>
@@ -132,6 +152,7 @@
           </div>
         </div>
 
+        <!-- Botón de activación -->
         <div class="resumen__acciones">
           <div class="toggle toggle--on" role="switch" aria-checked="true" aria-label="Alarma activada">
             <span class="toggle__knob"></span>
@@ -145,9 +166,11 @@
         <div class="card card--dona">
           <h2 class="card__title">Distribución de resultados</h2>
 
+          <!-- Leyenda de la dona -->
           <div class="dona-row">
             <div class="dona" [style.background]="donaGradient"></div>
 
+            <!-- Listado de leyendas -->
             <ul class="leyenda">
               <li class="leyenda__item" *ngFor="let slice of distribution">
                 <span class="leyenda__color" [ngClass]="'leyenda__color--' + slice.variant"></span>
@@ -158,12 +181,14 @@
           </div>
         </div>
 
+        <!-- Respuesta -->
         <div class="card card--respuesta">
           <div class="card__header">
             <h2 class="card__title">Tiempo de respuesta</h2>
             <p class="card__subtitle">Segundos entre que suena y completas el reto</p>
           </div>
-
+          
+          <!-- Gráfico de tiempo de respuesta -->
           <div class="response-chart">
             <div class="response-bar" *ngFor="let bar of responseTime">
               <span class="response-bar__value">{{ bar.seconds }}</span>

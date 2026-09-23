@@ -22,24 +22,33 @@ import { FormsModule } from '@angular/forms';
     templateUrl: './reto-escritura.html',
     styleUrl: './reto-escritura.scss',
 })
+
+// Mock data
 export class RetoEscrituraComponent {
+    
+    // Variables de estado
     protected readonly targetPhrase = 'El sol ya salió, es hora de continuar';
     protected typedText = 'El sol ya salió, es hora de co';
 
+    // Constructor
     constructor(private readonly router: Router) {}
 
+    // Progress
     protected get progressPercent(): number {
         return Math.min(100, (this.typedText.length / this.targetPhrase.length) * 100);
     }
 
+    // Error state
     protected get hasError(): boolean {
         return this.typedText.length > 0 && !this.targetPhrase.startsWith(this.typedText);
     }
 
+    // Completion state
     protected get isComplete(): boolean {
         return this.typedText === this.targetPhrase;
     }
 
+    // If challenge is complete, navigate to the "reto completado" page
     protected onTypedTextChange(): void {
         if (this.isComplete) {
             this.router.navigateByUrl('/reto-completado');
