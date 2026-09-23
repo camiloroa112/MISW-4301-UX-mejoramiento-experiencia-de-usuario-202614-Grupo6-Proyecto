@@ -28,7 +28,7 @@
         </svg>
         <span>Dashboard</span>
       </a>
-      <a class="nav-item">
+      <a class="nav-item" routerLink="/perfil">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path d="M12.0002 5.40039C13.5466 5.4005 14.8 6.65386 14.8 8.2002C14.7999 9.74644 13.5465 10.9999 12.0002 11C10.4539 11 9.20055 9.7465 9.20044 8.2002C9.20044 6.6538 10.4538 5.40039 12.0002 5.40039Z" stroke="#615F58" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M5.40002 19.8C5.40002 16.5 8.40002 14.3 12 14.3C15.6 14.3 18.6 16.5 18.6 19.8" stroke="#615F58" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -45,7 +45,7 @@
           <span class="user-block__email">{{ user.email }}</span>
         </div>
       </div>
-      <button type="button" class="logout-button">
+      <button type="button" class="logout-button" routerLink="/login">
         <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <g stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M15 4H6a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h9" />
@@ -106,6 +106,7 @@
             <span class="next-alarm__subtitle">Mañana · Gym · Reto de escritura</span>
           </div>
 
+          <!-- Próxima alarma -->
           <div class="next-alarm__col next-alarm__col--side">
             <div class="next-alarm__days">
               <span class="day-chip" *ngFor="let day of nextAlarmDays" [class.day-chip--active]="day.active">{{ day.label }}</span>
@@ -124,11 +125,12 @@
               <a class="activity-card__link" href="javascript:void(0)">Ver todo</a>
             </div>
             
-            <!--List of recent activities-->
+            <!--Listado de actividades recientes-->
             <ul class="activity-list">
               <li class="activity-item" *ngFor="let item of recentActivity">
                 <span class="activity-item__icon">
-                  <!-- Campana de solo contorno (stroke), no rellena -->
+                  
+                  <!--Campana de solo contorno (stroke), no rellena-->
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M12 6.60034C13.0343 6.60034 14.0264 7.01061 14.7578 7.74194C15.4892 8.47329 15.9003 9.46548 15.9004 10.4998V11.9998C15.9004 13.3406 16.2017 14.5996 16.7793 15.7H7.2207C7.79829 14.5996 8.09961 13.3406 8.09961 11.9998V10.4998C8.09966 9.46548 8.51084 8.47329 9.24219 7.74194C9.92786 7.05632 10.8428 6.65304 11.8066 6.60522L12 6.60034Z" stroke="#B4651F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M12 5.69998V4.09998" stroke="#B4651F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -136,16 +138,19 @@
                   </svg>
                 </span>
 
-                <!--Title and Subtitle-->
+                <!--Titulo y subtítulo-->
                 <div class="activity-item__text">
                   <span class="activity-item__title">{{ item.title }}</span>
                   <span class="activity-item__subtitle">{{ item.subtitle }}</span>
                 </div>
 
+                <!--Status-->
                 <span class="status-badge" [ngClass]="'status-badge--' + item.statusVariant">
                   <span class="status-badge__dot" aria-hidden="true"></span>
                     {{ item.status }}
-                </span>                
+                </span>
+
+                <!--Chevron-->
                 <svg xmlns="http://www.w3.org/2000/svg" width="9" height="15" viewBox="0 0 9 15" fill="none">
                   <path d="M0.900024 0.900024L7.40002 7.40002L0.900024 13.9" stroke="#75736C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -153,12 +158,14 @@
             </ul>
           </mat-card>
 
+          <!--Weekly summary-->
           <div class="weekly-card">
             <div class="weekly-card__header">
               <h2 class="weekly-card__title">Resumen semanal</h2>
               <p class="weekly-card__subtitle">Posposiciones por día</p>
             </div>
 
+            <!--Weekly chart-->
             <div class="weekly-chart">
               <div class="weekly-chart__bar" *ngFor="let bar of weeklySnoozes">
                 <div class="weekly-chart__track">

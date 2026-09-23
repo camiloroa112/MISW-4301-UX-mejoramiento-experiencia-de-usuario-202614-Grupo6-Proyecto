@@ -3,13 +3,7 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import {
-    ALARM_DAYS,
-    ALARM_DATA,
-    DISTRIBUTION,
-    RESPONSE_TIME,
-    CURRENT_USER,
-} from './mock-data';
+import { ALARM_DAYS, ALARM_DATA, DISTRIBUTION, RESPONSE_TIME, CURRENT_USER,} from './mock-data';
 
 /**
  * DetalleAlarmaVivoComponent
@@ -25,6 +19,7 @@ import {
     templateUrl: './detalle-alarma-vivo.html',
     styleUrl: './detalle-alarma-vivo.scss',
 })
+// Mock data
 export class DetalleAlarmaVivoComponent {
     protected readonly user = CURRENT_USER;
     protected readonly alarmName = 'Gym';
@@ -36,6 +31,7 @@ export class DetalleAlarmaVivoComponent {
     protected readonly distribution = DISTRIBUTION;
     protected readonly responseTime = RESPONSE_TIME;
 
+    // Variables de estado
     protected get donaGradient(): string {
         const exitoPct = 68;
         const acentoPct = exitoPct + 22;
