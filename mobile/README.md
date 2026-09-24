@@ -42,18 +42,29 @@ npm start                    # ng serve — http://localhost:4200/
 npm start -- --port 4300     # si corres web/ al mismo tiempo, para no chocar puertos
 ```
 
-### Compilar a Android (opcional)
+### APK ya compilado
 
-El proyecto incluye Capacitor y las dependencias nativas (`@capacitor/android` no está instalado por defecto). Para generar el proyecto Android y compilar el APK:
+Hay un APK debug ya generado en [`mobile/app-debug.apk`](app-debug.apk) — instálalo directo en un emulador o dispositivo Android (`adb install app-debug.apk`) sin necesidad de compilar nada.
+
+### Compilar a Android desde cero
+
+El proyecto incluye Capacitor (`@capacitor/android` ya está en las dependencias) y la carpeta nativa `android/` está versionada en el repo. Para volver a compilar el APK tras cambios:
 
 ```bash
 npm run build
-npx cap add android      # primera vez
 npx cap sync android
 cd android && ./gradlew assembleDebug
 ```
 
-Requiere Android SDK (cmdline-tools, platform-tools, build-tools) instalado localmente. Este flujo no se ha verificado en este repositorio; documentar aquí cualquier ajuste una vez probado.
+El APK queda en `android/app/build/outputs/apk/debug/app-debug.apk` (ese path está en `.gitignore`; por eso se copia manualmente a `mobile/app-debug.apk` para versionarlo).
+
+Si es la primera vez que compilas en esta máquina, necesitas además:
+
+- **Android SDK** con `platform-tools`, `build-tools;35.0.0` y `platforms;android-34` instalados, y `sdk.dir` apuntando a él en `android/local.properties` (ese archivo no está versionado, hay que crearlo local: `echo "sdk.dir=$HOME/Library/Android/sdk" > android/local.properties`).
+- **JDK** (se probó con JDK 24).
+- La primera compilación descarga Gradle 8.14.3 y el Build-Tools 35 si faltan; puede tardar varios minutos.
+
+Verificado en este repositorio: `BUILD SUCCESSFUL` con `./gradlew assembleDebug`.
 
 ## Testing
 
